@@ -17,7 +17,17 @@
                 <h5>Inscription date: {{ student.inscription_date }}</h5>
                 <h5>Sex: {{ student.sex }}</h5>
                 <h5>Group: {{ student.group }}</h5>
+                <h5>Day Joined: {{ student.inscription_date }}</h5>
+                <div class="mt-5 float-right">
+                    <a href="{{ url_for('delete', id=student.id) }}">
+                        <i class="bi bi-trash-fill text-danger mx-4"></i>
+                    </a>
+                    <a href="{{ url_for('update_student', id=student.id) }}">
+                        <i class="bi bi-pencil-square text-success"></i>
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
 {% endblock %}

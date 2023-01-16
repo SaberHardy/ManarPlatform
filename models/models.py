@@ -1,6 +1,26 @@
+import enum
+
+import sqlalchemy_utils
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.declarative import declarative_base
 
 db = SQLAlchemy()
+
+Base = declarative_base()
+
+
+# class ActivityType(Base):
+#     SCHOOLS = [
+#         ('Programming Club', 'Programming Club'),
+#         ('Robotics', 'Robotics'),
+#         ('The Digital Library', 'The Digital Library'),
+#         ('The Digital Picture', 'The Digital Picture'),
+#         ('Graphic Club', 'Graphic Club'),
+#     ]
+
+class ActivityType(enum.Enum):
+    Programming_Club = 'Programming Club'
+    Robotics = 'Robotics'
 
 
 class StudentModel(db.Model):
@@ -21,13 +41,17 @@ class StudentModel(db.Model):
 
     # education_level = db.Column(db.String())
     # membership = db.Column(db.String())
-    # activity_type = db.Column(db.String())
+
+    activity_type = db.Column(db.String())
+    # activity_type = sqlalchemy_utils.types.choice.ChoiceType(ActivityType)
+
     # photo = FileField("photo", validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
     # TODO: This is a checkbox
     # paid = db.Column(db.Boolean())
 
     def __init__(self, fullname, birthday, place_of_birth,
-                 inscription_date, sex, group, computer_nbr, parents_phone):
+                 inscription_date, sex, group, computer_nbr,
+                 parents_phone, activity_type):
         # self.student_id = student_id
         self.fullname = fullname
         self.birthday = birthday
@@ -37,6 +61,7 @@ class StudentModel(db.Model):
         self.group = group
         self.computer_nbr = computer_nbr
         self.parents_phone = parents_phone
+        self.activity_type = activity_type
 
     def __repr__(self):
         return f"{self.fullname}"

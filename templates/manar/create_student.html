@@ -3,11 +3,6 @@
 {% block content %}
     <div class="container my-3">
         <form action='' method="POST">
-{#            <div class="form-group">#}
-{#                <label for="student_id">Student ID</label>#}
-{#                <input type="number" class="form-control" name="student_id"/>#}
-{#            </div>#}
-
             <div class="form-group">
                 <label for="fullname">Full name</label>
                 <input type="text" class="form-control" name="fullname" required/>
@@ -35,9 +30,15 @@
                 <label for="group">Group</label>
                 <input class="form-control" type="text" name="group" required/>
             </div>
+
+            <div class="form-group">
+                <label for="group">Activity Type</label>
+                <input class="form-control" type="text" name="activity_type" required/>
+            </div>
+
             <div class="form-group">
                 <label for="computer_nbr">Computer Number</label>
-                <input class="form-control" type="text" name="computer_nbr" />
+                <input class="form-control" type="text" name="computer_nbr"/>
             </div>
             <div class="form-group">
                 <label for="parents_phone"> Parents Phone number</label>
