@@ -1,4 +1,6 @@
 from models.models import db, StudentModel
+from django.shortcuts import get_object_or_404
+
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
@@ -49,6 +51,14 @@ def create():
 def retrieve_students():
     all_students = StudentModel.query.all()
     return render_template('manar/students.html', all_students=all_students)
+
+
+@app.route('/single/<int:id>')
+def single_student(id):
+    # student = StudentModel.query.filter_by(id=id).first()
+    student = StudentModel.query.get_or_404(id)
+
+    return render_template('manar/single.html', student=student)
 
 
 if __name__ == '__main__':
