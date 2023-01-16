@@ -1,12 +1,14 @@
+from secret_key import MY_SECRET_KEY
 from models.models import db, StudentModel
 from django.shortcuts import get_object_or_404
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash, url_for
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = MY_SECRET_KEY
 db.init_app(app)
 
 
@@ -94,6 +96,25 @@ def update_student(id):
             return redirect(f'/')
         return f"The student cant be updated"
     return render_template('manar/update_student.html', student_to_update=student_to_update)
+
+
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+    student_to_delete = StudentModel.query.get_or_404(id)
+    try:
+        StudentModel.query.get_or_404(id)
+        db.session.delete(student_to_delete)
+        db.session.commit()
+
+        # Return a message
+        flash("Blog Post Was Deleted!")
+
+        # Grab all the posts from the database
+        students = StudentModel.query.order_by(StudentModel.date_posted)
+        return render_template("manar/students.html", all_students=students)
+    except:
+        flash("The student doesnt exist")
+        return redirect(url_for('retrieve_students'))
 
 
 if __name__ == '__main__':
