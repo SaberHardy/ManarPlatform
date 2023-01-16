@@ -61,5 +61,40 @@ def single_student(id):
     return render_template('manar/single.html', student=student)
 
 
+@app.route('/<int:id>/update', methods=['GET', 'POST'])
+def update_student(id):
+    student_to_update = StudentModel.query.filter_by(id=id).first()
+    if request.method == 'POST':
+        if student_to_update:
+            db.session.delete(student_to_update)
+            db.session.commit()
+
+            fullname = request.form['fullname']
+            birthday = request.form['birthday']
+            place_of_birth = request.form['place_of_birth']
+            inscription_date = request.form['inscription_date']
+            sex = request.form['sex']
+            group = request.form['group']
+            computer_nbr = request.form['computer_nbr']
+            parents_phone = request.form['parents_phone']
+
+            student = StudentModel(
+                # student_id=student_id,
+                fullname=fullname,
+                birthday=birthday,
+                place_of_birth=place_of_birth,
+                inscription_date=inscription_date,
+                sex=sex,
+                group=group,
+                computer_nbr=computer_nbr,
+                parents_phone=parents_phone)
+            db.session.add(student)
+            db.session.commit()
+
+            return redirect(f'/')
+        return f"The student cant be updated"
+    return render_template('manar/update_student.html', student_to_update=student_to_update)
+
+
 if __name__ == '__main__':
     app.run()

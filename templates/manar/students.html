@@ -12,6 +12,7 @@
                 <th scope="col">Place of birth</th>
                 <th scope="col">Inscription date</th>
                 <th scope="col">Group</th>
+                <th scope="col">PC Number</th>
                 <th scope="col">Parents Phone</th>
                 <th scope="col">Update/Delete</th>
             </tr>
@@ -29,11 +30,15 @@
                     <td>{{ student.place_of_birth }}</td>
                     <td>{{ student.inscription_date }}</td>
                     <td>{{ student.group }}</td>
+                    <td>{{ student.computer_nbr }}</td>
                     <td>{{ student.parents_phone }}</td>
                     <td>
-                        <a href="#"><i
-                                class="bi bi-trash-fill text-danger mx-4"></i></a>
-                        <a href=""> <i class="bi bi-pencil-square text-success"></i></a>
+                        <a href="#">
+                            <i class="bi bi-trash-fill text-danger mx-4"></i>
+                        </a>
+                        <a href="{{ url_for('update_student', id=student.id) }}">
+                            <i class="bi bi-pencil-square text-success"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

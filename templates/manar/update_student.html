@@ -1,0 +1,46 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+    <div class="mx-3">
+        <h2 class="text-center my-5">Update {{ student_to_update.fullname }}</h2>
+        <form action='' method="POST">
+            <div class="form-group">
+                <label for="fullname">Full name</label>
+                <input value="{{ student_to_update.fullname }}" type="text" class="form-control" name="fullname"/>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input value="{{ student_to_update.birthday }}" type="date" class="form-control" name="birthday"/>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Place of Birth</label>
+                <input value="{{ student_to_update.place_of_birth }}" type="text" class="form-control" name="place_of_birth"/>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Date of The inscription</label>
+                <input value="{{ student_to_update.inscription_date }}" type="date" class="form-control" name="inscription_date"/>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <input value="{{ student_to_update.sex }}" class="form-control" type="text" name="sex"/>
+
+            </div>
+            <div class="form-group">
+                <label for="group">Group</label>
+                <input value="{{ student_to_update.group }}" class="form-control" type="text" name="group"/>
+            </div>
+            <div class="form-group">
+                <label for="computer_nbr">Computer Number</label>
+                <input value="{{ student_to_update.computer_nbr }}" class="form-control" type="text" name="computer_nbr"/>
+            </div>
+            <div class="form-group">
+                <label for="parents_phone"> Parents Phone number</label>
+                <input value="{{ student_to_update.parents_phone }}" class="form-control" type="text" name="parents_phone"/>
+            </div>
+
+            <button class="btn btn-success" type="submit">Update Student</button>
+        </form>
+    </div>
+{% endblock %}
