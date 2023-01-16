@@ -1,8 +1,8 @@
 import enum
 
-import sqlalchemy_utils
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql import expression
 
 db = SQLAlchemy()
 
@@ -18,9 +18,13 @@ Base = declarative_base()
 #         ('Graphic Club', 'Graphic Club'),
 #     ]
 
-class ActivityType(enum.Enum):
-    Programming_Club = 'Programming Club'
-    Robotics = 'Robotics'
+
+class ActivityType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    activity_name = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f"{self.activity_name}"
 
 
 class StudentModel(db.Model):

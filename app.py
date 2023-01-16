@@ -1,5 +1,6 @@
+from forms.activityForms import ActivityForm
 from secret_key import MY_SECRET_KEY
-from models.models import db, StudentModel
+from models.models import db, StudentModel, ActivityType
 from django.shortcuts import get_object_or_404
 from flask_migrate import Migrate
 
@@ -17,6 +18,12 @@ db.init_app(app)
 @app.before_first_request
 def create_table():
     db.create_all()
+
+
+@app.context_processor
+def all_activities():
+    activities = ActivityType.query.all()
+    return dict(activities=activities)
 
 
 @app.route('/create', methods=['GET', 'POST'])
@@ -121,6 +128,30 @@ def delete(id):
     except:
         flash("The student doesnt exist")
         return redirect(url_for('retrieve_students'))
+
+
+@app.route('/create-activity', methods=['GET', 'POST'])
+def create_activity():
+    flag = 'Create'
+    form = ActivityForm()
+    if form.validate_on_submit():
+        activity = ActivityType(activity_name=form.activity_name.data)
+
+        form.activity_name.data = ''
+
+        db.session.add(activity)
+        db.session.commit()
+
+        flash("Your activity added successfully")
+
+    return render_template('manar/create_activity_type.html', form=form, flag=flag)
+
+
+@app.route('/activities', methods=['POST', 'GET'])
+def accc():
+    activities = ActivityType.query.all()
+
+    return render_template('manar/allactivities.html', activities=activities)
 
 
 if __name__ == '__main__':
