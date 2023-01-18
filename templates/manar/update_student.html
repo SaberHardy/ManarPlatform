@@ -27,20 +27,20 @@
                                name="inscription_date"/>
                     </div>
                     <div class="form-group">
-                        <label for="sex">Sex</label>
-                        <input value="{{ student_to_update.sex }}" class="form-control" type="text" name="sex"/>
+                        <label for="computer_nbr">Select an Activity</label>
 
+                        <select class="form-select" name="activity_type" aria-label="Default select example">
+                            <option selected>Select an activity</option>
+                            {% for activity in activities %}
+                                <option value="{{ activity }}">{{ activity }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
                 <div class="col-6 mt-3">
                     <div class="form-group">
                         <label for="group">Group</label>
                         <input value="{{ student_to_update.group }}" class="form-control" type="text" name="group"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="group">Activity Type</label>
-                        <input value="{{ student_to_update.activity_type }}" class="form-control" type="text"
-                               name="activity_type"/>
                     </div>
                     <div class="form-group">
                         <label for="computer_nbr">Computer Number</label>
@@ -52,6 +52,12 @@
                         <input value="{{ student_to_update.parents_phone }}" class="form-control" type="text"
                                name="parents_phone"/>
                     </div>
+                    <div class="form-group">
+                        <label for="sex">Sex</label>
+                        <input value="{{ student_to_update.sex }}" class="form-control" type="text" name="sex"/>
+
+                    </div>
+
                     <button class="btn btn-success float-right mt-4" type="submit">Update Student</button>
                 </div>
             </div>
