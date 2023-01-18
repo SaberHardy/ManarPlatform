@@ -88,7 +88,7 @@ def update_student(id):
             inscription_date = request.form['inscription_date']
             sex = request.form['sex']
             group = request.form['group']
-            activity_type = request.form['activity_type']
+            activity_type = request.form.get('activity_type')
             computer_nbr = request.form['computer_nbr']
             parents_phone = request.form['parents_phone']
 

@@ -1,8 +1,11 @@
 {% extends 'partials/base.html' %}
 
 {% block content %}
-    <div class="container my-3">
+    <div class="border shadow border rounded-4 container my-3">
+        <h2 class="text-center mt-3">Create Student</h2>
+
         <form action='/create' method="POST">
+
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -10,12 +13,10 @@
                         <input type="text" placeholder="Student Full name" class="form-control" name="fullname"
                                required/>
                     </div>
-
                     <div class="form-group">
                         <label for="birthday">Birthday</label>
                         <input type="date" class="form-control" name="birthday" required/>
                     </div>
-
                     <div class="form-group">
                         <label for="exampleInputEmail1">Place of Birth</label>
                         <input type="text" placeholder="Place of Birth" class="form-control" name="place_of_birth"
@@ -28,10 +29,10 @@
                     <div class="form-group">
                         <label for="computer_nbr">Select an Activity</label>
 
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" name="activity_type" aria-label="Default select example">
                             <option selected>Select an activity</option>
                             {% for activity in activities %}
-                                <option value="{{ activity }}" name="activity_type">{{ activity }}</option>
+                                <option value="{{ activity }}">{{ activity }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -46,19 +47,17 @@
                         <label for="sex">Sex</label>
                         <input class="form-control" type="text" name="sex"/>
                     </div>
-
                     <div class="form-group">
                         <label for="group">Group</label>
                         <input class="form-control" type="text" name="group" required/>
                     </div>
-
                     <div class="form-group">
                         <label for="parents_phone"> Parents Phone number</label>
                         <input class="form-control" type="text" name="parents_phone" required/>
                     </div>
+                    <button class="btn btn-success float-right mt-4" type="submit">Add Student</button>
                 </div>
             </div>
-            <button class="btn btn-success float-right" type="submit">Add Student</button>
         </form>
     </div>
 {% endblock %}
