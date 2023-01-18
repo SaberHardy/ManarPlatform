@@ -36,9 +36,10 @@ def create():
         birthday = request.form['birthday']
         place_of_birth = request.form['place_of_birth']
         inscription_date = request.form['inscription_date']
-        sex = request.form['sex']
-        group = request.form['group']
+        sex = request.form.get('sex')
+        group = request.form.get('group')
         activity_type = request.form.get('activity_type')
+        education_level = request.form.get('education_level')
         computer_nbr = request.form['computer_nbr']
         parents_phone = request.form['parents_phone']
 
@@ -50,6 +51,7 @@ def create():
             inscription_date=inscription_date,
             sex=sex,
             group=group,
+            education_level=education_level,
             activity_type=activity_type,
             computer_nbr=computer_nbr,
             parents_phone=parents_phone)
@@ -86,9 +88,10 @@ def update_student(id):
             birthday = request.form['birthday']
             place_of_birth = request.form['place_of_birth']
             inscription_date = request.form['inscription_date']
-            sex = request.form['sex']
+            sex = request.form.get('sex')
             group = request.form['group']
             activity_type = request.form.get('activity_type')
+            education_level = request.form.get('education_level')
             computer_nbr = request.form['computer_nbr']
             parents_phone = request.form['parents_phone']
 
@@ -100,6 +103,7 @@ def update_student(id):
                 inscription_date=inscription_date,
                 sex=sex,
                 group=group,
+                education_level=education_level,
                 activity_type=activity_type,
                 computer_nbr=computer_nbr,
                 parents_phone=parents_phone)
@@ -155,4 +159,4 @@ def accc():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

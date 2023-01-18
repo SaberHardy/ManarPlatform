@@ -43,7 +43,7 @@ class StudentModel(db.Model):
 
     """These three fields should be a relationship"""
 
-    # education_level = db.Column(db.String())
+    education_level = db.Column(db.String())
     # membership = db.Column(db.String())
 
     activity_type = db.Column(db.String())
@@ -54,7 +54,7 @@ class StudentModel(db.Model):
     # paid = db.Column(db.Boolean())
 
     def __init__(self, fullname, birthday, place_of_birth,
-                 inscription_date, sex, group, computer_nbr,
+                 inscription_date, sex, group, education_level, computer_nbr,
                  parents_phone, activity_type):
         # self.student_id = student_id
         self.fullname = fullname
@@ -63,6 +63,7 @@ class StudentModel(db.Model):
         self.inscription_date = inscription_date
         self.sex = sex
         self.group = group
+        self.education_level = education_level
         self.computer_nbr = computer_nbr
         self.parents_phone = parents_phone
         self.activity_type = activity_type
