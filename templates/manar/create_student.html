@@ -44,12 +44,12 @@
                         <input type="date" class="form-control" name="inscription_date" required/>
                     </div>
                     <div class="form-group">
-                        <label for="computer_nbr">Sex</label>
+                        <label for="sex">Sex</label>
 
                         <select class="form-select" name="sex" aria-label="Default select example">
                             <option selected>Sex</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -65,15 +65,16 @@
 
                         <select class="form-select" name="education_level" aria-label="Default select example">
                             <option selected>Educational level</option>
-                                <option value="Male">Primary School</option>
-                                <option value="Female">Middle School</option>
-                                <option value="Female">High School</option>
-                                <option value="Female">University</option>
+                            <option value="Primary School">Primary School</option>
+                            <option value="Middle School">Middle School</option>
+                            <option value="High School">High School</option>
+                            <option value="University">University</option>
                         </select>
                     </div>
-                    <button class="btn btn-success float-right mt-4" type="submit">Add Student</button>
                 </div>
             </div>
+            <button class="btn btn-success my-4 submit-btn" type="submit">Add Student</button>
+
         </form>
     </div>
 {% endblock %}

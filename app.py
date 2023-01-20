@@ -151,12 +151,12 @@ def create_activity():
     return render_template('manar/create_activity_type.html', form=form, flag=flag)
 
 
-@app.route('/activities', methods=['POST', 'GET'])
-def accc():
-    activities = ActivityType.query.all()
-
-    return render_template('manar/allactivities.html', activities=activities)
+# @app.route('/activities', methods=['POST', 'GET'])
+# def all_activities():
+#     activities = ActivityType.query.all()
+#
+#     return render_template('manar/allactivities.html', activities=activities)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
