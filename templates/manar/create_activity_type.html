@@ -1,16 +1,25 @@
-{% extends 'partials/base.html' %}
+{% extends 'manar_app/base.html' %}
+
 {% block content %}
+    <div id="layoutSidenav">
+        {% include 'manar_app/side_bar.html' %}
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="border shadow border rounded-4 container my-3">
+                        <h2 class="text-center mt-3">Create Activity</h2>
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            {{ form.activity_name.label(class="form-label") }}
+                            {{ form.activity_name(class="form-control") }}
 
-    <div class="container my-5">
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            {{ form.activity_name.label(class="form-label") }}
-            {{ form.activity_name(class="form-control") }}
-
-            <br>
-            {{ form.submit(class="btn btn-success") }}
-        </form>
-
+                            <br>
+                            {{ form.submit(class="btn btn-success my-5") }}
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 {% endblock %}
 

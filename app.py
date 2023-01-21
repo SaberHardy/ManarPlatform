@@ -29,7 +29,7 @@ def all_activities():
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'GET':
-        return render_template('manar/create_student.html')
+        return render_template('manar_app/create_student.html')
     if request.method == 'POST':
         # student_id = request.form['student_id']
         fullname = request.form['fullname']
@@ -65,7 +65,7 @@ def create():
 @app.route('/', methods=['GET', 'POST'])
 def retrieve_students():
     all_students = StudentModel.query.all()
-    return render_template('manar/students.html', all_students=all_students)
+    return render_template('manar_app/index.html', all_students=all_students)
 
 
 @app.route('/single/<int:id>')
@@ -73,7 +73,7 @@ def single_student(id):
     # student = StudentModel.query.filter_by(id=id).first()
     student = StudentModel.query.get_or_404(id)
 
-    return render_template('manar/single.html', student=student)
+    return render_template('manar_app/single.html', student=student)
 
 
 @app.route('/<int:id>/update', methods=['GET', 'POST'])
@@ -111,8 +111,8 @@ def update_student(id):
             db.session.commit()
 
             return redirect(f'/')
-        return f"The student cant be updated"
-    return render_template('manar/update_student.html', student_to_update=student_to_update)
+        return f"The student can't be updated"
+    return render_template('manar_app/update_student.html', student_to_update=student_to_update)
 
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
@@ -128,7 +128,7 @@ def delete(id):
 
         # Grab all the posts from the database
         students = StudentModel.query.order_by(StudentModel.date_posted)
-        return render_template("manar/students.html", all_students=students)
+        return render_template("manar_app/index.html", all_students=students)
     except:
         flash("The student doesnt exist")
         return redirect(url_for('retrieve_students'))
@@ -151,11 +151,18 @@ def create_activity():
     return render_template('manar/create_activity_type.html', form=form, flag=flag)
 
 
-# @app.route('/activities', methods=['POST', 'GET'])
-# def all_activities():
-#     activities = ActivityType.query.all()
-#
-#     return render_template('manar/allactivities.html', activities=activities)
+@app.route('/all_employees', methods=['POST', 'GET'])
+def all_employees():
+    employees = StudentModel.query.filter_by(activity_type='Employee')
+
+    return render_template('manar_app/employees.html', employees=employees)
+
+
+@app.route('/all_students', methods=['POST', 'GET'])
+def all_students():
+    students = StudentModel.query.filter_by(activity_type='Student')
+
+    return render_template('manar_app/students.html', students=students)
 
 
 if __name__ == '__main__':

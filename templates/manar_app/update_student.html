@@ -1,0 +1,86 @@
+{% extends 'manar_app/base.html' %}
+
+{% block content %}
+    <div id="layoutSidenav">
+        {% include 'manar_app/side_bar.html' %}
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="border shadow border rounded-4 container my-3">
+                        <h2 class="text-center mt-3">Update {{ student_to_update.fullname }}</h2>
+                        <form action='' method="POST">
+                            <div class="row ">
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="fullname">Full name</label>
+                                        <input value="{{ student_to_update.fullname }}" type="text" class="form-control"
+                                               name="fullname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="birthday">Birthday</label>
+                                        <input value="{{ student_to_update.birthday }}" type="date" class="form-control"
+                                               name="birthday"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Place of Birth</label>
+                                        <input value="{{ student_to_update.place_of_birth }}" type="text"
+                                               class="form-control"
+                                               name="place_of_birth"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Date of The inscription</label>
+                                        <input value="{{ student_to_update.inscription_date }}" type="date"
+                                               class="form-control"
+                                               name="inscription_date"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="computer_nbr">Select an Activity</label>
+
+                                        <select class="form-select" name="activity_type"
+                                                aria-label="Default select example">
+                                            <option selected>Select an activity</option>
+                                            {% for activity in activities %}
+                                                <option value="{{ activity }}">{{ activity }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="form-group">
+                                        <label for="group">Group</label>
+                                        <input value="{{ student_to_update.group }}" class="form-control" type="text"
+                                               name="group"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="computer_nbr">Computer Number</label>
+                                        <input value="{{ student_to_update.computer_nbr }}" class="form-control"
+                                               type="text"
+                                               name="computer_nbr"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="parents_phone"> Parents Phone number</label>
+                                        <input value="{{ student_to_update.parents_phone }}" class="form-control"
+                                               type="text"
+                                               name="parents_phone"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="computer_nbr">Sex</label>
+
+                                        <select class="form-select" name="sex" aria-label="Default select example">
+                                            <option selected>Sex</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success float-right my-4" type="submit">
+                                Update Student
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

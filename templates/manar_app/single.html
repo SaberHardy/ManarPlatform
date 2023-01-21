@@ -1,0 +1,40 @@
+{% extends 'manar_app/base.html' %}
+
+{% block content %}
+    <div id="layoutSidenav">
+        {% include 'manar_app/side_bar.html' %}
+        <div id="layoutSidenav_content">
+            <main>
+                <h2 class="text-center my-5">Detail For {{ student.fullname }}</h2>
+                <div class="container-fluid px-4 my-5">
+                    <div class="card flex-row">
+                        <img class="text-center" src="{{ url_for('static', filename='imgs/red.jpg') }}"
+                             width="350"
+                             height="400"
+                             alt="no img">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Full name: {{ student.fullname|title }}
+                            </h3>
+                            <h5>ID: {{ student.id }}</h5>
+                            <h5>Birthday: {{ student.birthday }}</h5>
+                            <h5>Place of birth: {{ student.place_of_birth }}</h5>
+                            <h5>Inscription date: {{ student.inscription_date }}</h5>
+                            <h5>Sex: {{ student.sex }}</h5>
+                            <h5>Group: {{ student.group }}</h5>
+                            <h5>Day Joined: {{ student.inscription_date }}</h5>
+                            <div class="mt-5 float-right">
+                                <a href="{{ url_for('delete', id=student.id) }}">
+                                    <i class="bi bi-trash-fill text-danger mx-4"></i>
+                                </a>
+                                <a href="{{ url_for('update_student', id=student.id) }}">
+                                    <i class="bi bi-pencil-square text-success"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

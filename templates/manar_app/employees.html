@@ -1,0 +1,63 @@
+{% extends 'manar_app/base.html' %}
+
+{% block content %}
+    <div id="layoutSidenav">
+        {% include 'manar_app/side_bar.html' %}
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="border shadow border rounded-4 container my-3">
+                        <h2 class="text-center my-5">All Employees</h2>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Full name</th>
+                                <th scope="col">Birthday</th>
+                                <th scope="col">Place of birth</th>
+                                <th scope="col">Inscription date</th>
+                                <th scope="col">Group</th>
+                                <th scope="col">Sex</th>
+                                <th scope="col">Activity Type</th>
+                                <th scope="col">PC Number</th>
+                                <th scope="col">Parents Phone</th>
+                                <th scope="col">Delete / Update</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for employee in employees %}
+
+                                <tr>
+                                    <th scope="row">{{ employee.id }}</th>
+                                    <td>
+                                        {# <a href="{{ url_for('single_student', id=student.id) }}"> #}
+                                        <a href="#">
+                                            {{ employee.fullname }}
+                                        </a>
+                                    </td>
+                                    <td>{{ employee.birthday }}</td>
+                                    <td>{{ employee.place_of_birth }}</td>
+                                    <td>{{ employee.inscription_date }}</td>
+                                    <td>{{ employee.group }}</td>
+                                    <td>{{ employee.sex }}</td>
+                                    <td>{{ employee.activity_type }}</td>
+                                    <td>{{ employee.computer_nbr }}</td>
+                                    <td>{{ employee.parents_phone }}</td>
+                                    <td>
+                                        <a href="{{ url_for('delete', id=employee.id) }}">
+                                            <i class="bi bi-trash-fill text-danger mx-4"></i>
+                                        </a>
+                                        <a href="{{ url_for('update_student', id=employee.id) }}">
+                                            <i class="bi bi-pencil-square text-success"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
