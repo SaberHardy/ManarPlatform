@@ -5,4 +5,4 @@ from wtforms.validators import DataRequired
 
 class ActivityForm(FlaskForm):
     activity_name = StringField("Create your own Activity", validators=[DataRequired()])
-    submit = SubmitField("Create")
+    submit = SubmitField("Create Activity")

@@ -43,10 +43,12 @@
                                     <td>{{ student.parents_phone }}</td>
                                     <td>
                                         <a href="{{ url_for('delete', id=student.id) }}">
-                                            <i class="bi bi-trash-fill text-danger mx-4"></i>
+                                            <i class="fa-solid fa-trash text-danger mx-4"></i>
                                         </a>
-                                        <a href="{{ url_for('update_student', id=student.id) }}">
-                                            <i class="bi bi-pencil-square text-success"></i>
+                                        <a type="button" href="{{ url_for('update_student', id=student.id) }}"
+                                           data-toggle="modal"
+                                           data-target="#exampleModalCenter">
+                                            <i class="fa-solid fa-pen text-success"></i>
                                         </a>
                                     </td>
                                 </tr>

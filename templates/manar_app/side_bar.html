@@ -12,13 +12,13 @@
 
                 <a class="nav-link" href="{{ url_for('create') }}">
                     <div class="sb-nav-link-icon">
-                        <i class="bi bi-database-fill-add"></i>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
                     Create Members
                 </a>
                 <a class="nav-link" href="{{ url_for('create_activity') }}">
                     <div class="sb-nav-link-icon">
-                        <i class="bi bi-activity"></i>
+                        <i class="fa-solid fa-plus"></i>
                     </div>
                     Create Activity
                 </a>
@@ -44,10 +44,12 @@
                      data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                         <a class="nav-link collapsed" href="{{ url_for('all_employees') }}">
+                            <i class="fa-solid fa-users icon-creation"></i>
                             Employees
                         </a>
 
                         <a class="nav-link collapsed" href="{{ url_for('all_students') }}">
+                            <i class="fa-solid fa-book icon-creation"></i>
                             Students
                         </a>
                     </nav>

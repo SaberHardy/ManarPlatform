@@ -65,7 +65,12 @@ def create():
 @app.route('/', methods=['GET', 'POST'])
 def retrieve_students():
     all_students = StudentModel.query.all()
-    return render_template('manar_app/index.html', all_students=all_students)
+    count_students = StudentModel.query.filter_by(activity_type='Student').count()
+    count_employees = StudentModel.query.filter_by(activity_type='Employee').count()
+    return render_template('manar_app/index.html',
+                           all_students=all_students,
+                           count_students=count_students,
+                           count_employees=count_employees,)
 
 
 @app.route('/single/<int:id>')

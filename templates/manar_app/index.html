@@ -11,8 +11,10 @@
                         <div class="col-xl-6 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body text-center">ALL STUDENTS</div>
+                                <hr>
+                                <p class="mx-3">You have {{ count_students }} students in your company</p>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
+                                    <a class="small text-white stretched-link" href="{{ url_for('all_students') }}">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -21,8 +23,10 @@
                         <div class="col-xl-6 col-md-6">
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body text-center">ALL EMPLOYEES</div>
+                                <hr>
+                                <p class="mx-3">You have {{ count_employees }} employees in your company</p>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
+                                    <a class="small text-white stretched-link" href="{{ url_for('all_employees') }}">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -93,12 +97,12 @@
                                         <td>
 
                                             <a href="{{ url_for('delete', id=student.id) }}">
-                                                <i class="bi bi-trash-fill text-danger mx-4"></i>
+                                                <i class="fa-solid fa-trash text-danger mx-4"></i>
                                             </a>
                                             <a type="button" href="{{ url_for('update_student', id=student.id) }}"
                                                data-toggle="modal"
                                                data-target="#exampleModalCenter">
-                                                <i class="bi bi-pencil-square text-success"></i>
+                                                <i class="fa-solid fa-pen text-success"></i>
                                             </a>
                                         </td>
                                     </tr>
