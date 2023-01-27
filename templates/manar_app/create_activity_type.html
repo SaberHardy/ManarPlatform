@@ -1,0 +1,58 @@
+{% extends 'manar_app/base.html' %}
+
+{% block content %}
+    <div id="layoutSidenav">
+        {% include 'manar_app/side_bar.html' %}
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="border shadow border rounded-4 container my-3">
+                        <h2 class="text-center mt-3">Create Activity</h2>
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            {{ form.activity_name.label(class="form-label") }}
+                            {{ form.activity_name(class="form-control") }}
+
+                            <br>
+                            {{ form.submit(class="btn btn-success my-5") }}
+                        </form>
+                    </div>
+                    <div class="border shadow border rounded-4 container my-3">
+
+                        <h3 class="text-center my-5">All Activities</h3>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Activity Name</th>
+                                <th scope="col">Delete/update</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for activity in activities %}
+                                <tr>
+                                    <th scope="row">{{ activity.id }}</th>
+                                    <td>{{ activity.activity_name }}</td>
+                                    <td>
+                                        <a href="{{ url_for('delete_activity', id=activity.id) }}">
+                                            <i class="fa-solid fa-trash text-danger mx-4"></i>
+                                        </a>
+                                        <a type="button" href="#"
+                                           data-toggle="modal"
+                                           data-target="#exampleModalCenter">
+                                            <i class="fa-solid fa-pen text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+

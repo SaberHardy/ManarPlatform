@@ -70,7 +70,7 @@ def retrieve_students():
     return render_template('manar_app/index.html',
                            all_students=all_students,
                            count_students=count_students,
-                           count_employees=count_employees,)
+                           count_employees=count_employees, )
 
 
 @app.route('/single/<int:id>')
@@ -153,7 +153,7 @@ def create_activity():
 
         flash("Your activity added successfully")
 
-    return render_template('manar/create_activity_type.html', form=form, flag=flag)
+    return render_template('manar_app/create_activity_type.html', form=form, flag=flag)
 
 
 @app.route('/all_employees', methods=['POST', 'GET'])
@@ -168,6 +168,31 @@ def all_students():
     students = StudentModel.query.filter_by(activity_type='Student')
 
     return render_template('manar_app/students.html', students=students)
+
+
+@app.context_processor
+def all_activities():
+    activities = ActivityType.query.all()
+    return dict(activities=activities)
+
+
+@app.route('/delete-activity/<int:id>', methods=['GET', 'POST'])
+def delete_activity(id):
+    activity_to_delete = ActivityType.query.get_or_404(id)
+    try:
+        ActivityType.query.get_or_404(id)
+        db.session.delete(activity_to_delete)
+        db.session.commit()
+
+        # Return a message
+        flash("Activity Deleted successfully!")
+
+        # Grab all the posts from the database
+        activities = StudentModel.query.order_by(StudentModel.date_posted)
+        return render_template("manar_app/allactivities.html", activities=activities)
+    except:
+        flash("The student doesnt exist")
+        return redirect(url_for('create_activity'))
 
 
 if __name__ == '__main__':
