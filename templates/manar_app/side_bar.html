@@ -43,6 +43,11 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                      data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="{{ url_for('all_adherents') }}">
+                            <i class="fa-solid fa-users icon-creation"></i>
+                            Adherents
+                        </a>
+
                         <a class="nav-link collapsed" href="{{ url_for('all_employees') }}">
                             <i class="fa-solid fa-users icon-creation"></i>
                             Employees

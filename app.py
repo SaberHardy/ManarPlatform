@@ -176,6 +176,12 @@ def all_activities():
     return dict(activities=activities)
 
 
+@app.route('/students_employees', methods=['GET', 'POST'])
+def all_adherents():
+    students_employees = StudentModel.query.all()
+    return render_template('manar_app/students_adherents.html', students_employees=students_employees)
+
+
 @app.route('/delete-activity/<int:id>', methods=['GET', 'POST'])
 def delete_activity(id):
     activity_to_delete = ActivityType.query.get_or_404(id)
